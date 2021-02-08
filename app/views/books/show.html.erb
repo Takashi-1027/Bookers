@@ -1,0 +1,18 @@
+<div class="show">
+	<!-- サクセスメッセージ -->
+	<p id="notice"><%= notice %></p>
+	<!-- 詳細内容 -->
+	<p>
+		<strong>Title:</strong>
+		<%= @book.title %>
+	</p>
+	<p>
+		<strong>Body:</strong>
+		<%= @book.body %>
+	</p>
+
+	<!-- 他のページへのボタン -->
+	<%= link_to "Edit",edit_book_path(@book),class: "edit_#{@book.id}"%>
+	<span> | </span>
+	<%= link_to "Back",books_path ,class: "back" %>
+</div>

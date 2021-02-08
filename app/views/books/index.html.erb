@@ -1,0 +1,44 @@
+<!-- 投稿一覧 -->
+<!-- サクセスメッセージ -->
+<p id="notice"><%= notice %></p>
+<div class="index">
+	<h1 class="index_heading">Books</h1>
+	<table>
+		<thead>
+			<tr>
+				<th width="190px">Title</th>
+				<th width="400px">Body</th>
+				<th width="150px"></th>
+			</tr>
+		</thead>
+		<% @books.each do |book| %>
+		<tbody>
+			<tr>
+				<td class="index-book-title"> <%= book.title %></td>
+				<td class="index-book-body"> <%= book.body %></td>
+				<td class="index-links">
+				  <span class="link"><%= link_to "Show",book_path(book.id),class: "show_#{book.id}" %></span>
+				  <span class="link"><%= link_to "Edit",edit_book_path(book.id),class: "edit_#{book.id}" %></span>
+				  <span class="link"><%= link_to "Destroy",book_path(book.id),method: :delete, "data-confirm" => "Are you sure？",class: "destroy_#{book.id}"%></span>
+				</td>
+		  </tr>
+		</tbody>
+		<% end %>
+  </table>
+</div>
+
+<!-- 新規投稿機能 -->
+<div class="new">
+  <h2>New book</h2>
+  <%=form_for(@book) do |f| %>
+    <p>
+  	  <%= f.label :title, "Title" %> <br>
+  	  <%= f.text_field :title, class: "book_title" %>
+    </p>
+    <p>
+    	<%= f.label :body, "Body" %> <br>
+    	<%= f.text_area :body, class: "book_body" %>
+	  </p>
+    <%= f.submit "Create Book" %>
+  <% end %>
+</div>
